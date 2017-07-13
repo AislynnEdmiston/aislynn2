@@ -19,7 +19,7 @@ Route::group(['middleware' => ['web']], function () {
     /**
      * Show index.html page from file
      */
-    Route::get('/grocery_list', function () {
+    Route::get('/', function () {
         $index = file_get_contents('index.html');
         return $index;
     });
