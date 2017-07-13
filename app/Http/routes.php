@@ -15,6 +15,15 @@ use App\Task;
 use Illuminate\Http\Request;
 
 Route::group(['middleware' => ['web']], function () {
+
+    /**
+     * Show index.html page from file
+     */
+    Route::get('/', function () {
+        $index = file_get_contents('index.html');
+        return $index;
+    });
+
     /**
      * Show Task Dashboard
      */
@@ -23,6 +32,7 @@ Route::group(['middleware' => ['web']], function () {
             'tasks' => Task::orderBy('created_at', 'asc')->get()
         ]);
     });
+
 
     /**
      * Add New Task
