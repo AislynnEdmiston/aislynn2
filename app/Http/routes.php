@@ -33,7 +33,7 @@ Route::group(['middleware' => ['web']], function () {
         ]);
 
         if ($validator->fails()) {
-            return redirect('/')
+            return redirect('/grocery_list')
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -42,7 +42,7 @@ Route::group(['middleware' => ['web']], function () {
         $task->name = $request->name;
         $task->save();
 
-        return redirect('/');
+        return redirect('/grocery_list');
     });
 
     /**
@@ -51,6 +51,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::delete('/task/{id}', function ($id) {
         Task::findOrFail($id)->delete();
 
-        return redirect('/');
+        return redirect('/grocery_list');
     });
 });
